@@ -42,7 +42,7 @@
     <view class="tab-item" hidden="{{!toggleBusiness}}">
       <text class="tab-item-left">首付比例</text>
       <view class="tab-item-right">
-        <text>{{downPayRatio}}%</text>
+        <text class="tab-item-right-text">{{downPayRatio}}%</text>
         <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -55,14 +55,14 @@
     <view class="tab-item">
       <text class="tab-item-left">贷款年限</text>
       <view class="tab-item-right">
-      <text>{{limtyear}}年</text>
+      <text class="tab-item-right-text">{{limtyear}}年</text>
         <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
     <view class="tab-item">
       <text class="tab-item-left">利率方式</text>
       <view class="tab-item-right">
-        <text>按{{commericeWay}}</text>
+        <text class="tab-item-right-text">按{{commericeWay}}</text>
         <image id="profileRate" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -83,7 +83,7 @@
     <view class="tab-item">
       <text class="tab-item-left">商业贷款利率</text>
       <view class="tab-item-right">
-        <text>基准利率({{basePR}}%)</text>
+        <text class="tab-item-right-text">基准利率({{basePR}}%)</text>
         <image id="loanRate" wx:if="{{hideImg}}" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -121,7 +121,7 @@
     <view class="tab-item" hidden="{{!toggleBusiness}}">
       <text class="tab-item-left">首付比例</text>
       <view class="tab-item-right">
-        <text>{{downPayRatio}}%</text>
+        <text class="tab-item-right-text">{{downPayRatio}}%</text>
         <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -134,7 +134,7 @@
     <view class="tab-item">
       <text class="tab-item-left">贷款年限</text>
       <view class="tab-item-right">
-        <text>{{limtyear}}年</text>
+        <text class="tab-item-right-text">{{limtyear}}年</text>
         <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -148,7 +148,7 @@
     <view class="tab-item">
       <text class="tab-item-left">公积金贷款利率</text>
       <view class="tab-item-right">
-        <text>基准利率({{interestFunLoan}}%)</text>
+        <text class="tab-item-right-text">基准利率({{interestFunLoan}}%)</text>
         <image id="funLoan" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -161,7 +161,7 @@
     <view class="tab-item">
       <text class="tab-item-left">利率方式</text>
       <view class="tab-item-right">
-        <text>按{{commericeWay}}</text>
+        <text class="tab-item-right-text">按{{commericeWay}}</text>
         <image id="profileRate" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -182,7 +182,7 @@
     <view class="tab-item">
       <text class="tab-item-left">商业贷款利率</text>
       <view class="tab-item-right">
-        <text>基准利率({{basePR}}%)</text>
+        <text class="tab-item-right-text">基准利率({{basePR}}%)</text>
         <image id="loanRate" wx:if="{{hideImg}}" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -220,7 +220,7 @@
     <view class="tab-item" hidden="{{!toggleBusiness}}">
       <text class="tab-item-left">首付比例</text>
       <view class="tab-item-right">
-        <text>{{downPayRatio}}%</text>
+        <text class="tab-item-right-text">{{downPayRatio}}%</text>
         <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
@@ -233,14 +233,14 @@
     <view class="tab-item">
       <text class="tab-item-left">贷款年限</text>
       <view class="tab-item-right">
-        <text>{{limtyear}}年</text>
+        <text class="tab-item-right-text">{{limtyear}}年</text>
         <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
     <view class="tab-item">
       <text class="tab-item-left">公积金贷款利率</text>
       <view class="tab-item-right">
-        <text>基准利率({{interestFunLoan}}%)</text>
+        <text class="tab-item-right-text">基准利率({{interestFunLoan}}%)</text>
         <image id="funLoan" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
       </view>
     </view>
