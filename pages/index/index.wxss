@@ -1,0 +1,123 @@
+container{
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+.tabs{
+  width: 750rpx;
+  height: 88rpx;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tab{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #999999;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.tabActive{
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+}
+.active{
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+  border-bottom: 8rpx solid #FFD854;
+  width: 44rpx;
+  height: 8rpx;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  border-radius: 4rpx;
+}
+.tab-content{
+  padding-left: 32rpx;
+  height: 500rpx;
+}
+.tab-item{
+  height: 99rpx;
+  border-bottom: 1px solid #EEEEEE;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 32rpx;
+}
+.tab-item-left{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #666666;
+}
+.radioGroup{
+  display: flex;
+  justify-content: space-around;
+  width: 462rpx;
+}
+.imgRadio{
+  width: 36rpx;
+  height: 36rpx;
+}
+.radio-text{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.tab-item-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.tab-item-input{
+  color: #333333;
+  text-align: right;
+  font-size: 30rpx;
+  display: block;
+}
+.tab-item-right-text{
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+.goImg{
+  width: 44rpx;
+  height: 44rpx;
+}
+.compute-btn{
+  width: 686rpx;
+  height: 88rpx;
+  background: #DADDE3;
+  border-radius: 44rpx;
+  margin-top: 180rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #FFFFFF;
+}
+.compute-active-btn{
+  width: 686rpx;
+  height: 88rpx;
+  background: #FFD854;
+  border-radius: 44rpx;
+  margin-top: 180rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #333333;
+}

@@ -1,0 +1,252 @@
+<!--index.wxml-->
+<view class="container">
+<view class="tabs">
+  <view class="tab {{index==0?'tabActive':''}}" data-index="0" bind:tap="bindViewTap">
+    商业贷款<view class="active" hidden="{{index==0?false:true}}"></view>
+  </view>
+  <view class="tab {{index==1?'tabActive':''}}" data-index="1" bind:tap="bindViewTap">
+    组合贷款<view class="active" hidden="{{index==1?false:true}}"></view>
+  </view>
+  <view class="tab {{index==2?'tabActive':''}}" data-index="2" bind:tap="bindViewTap">
+    公积金贷款<view class="active" hidden="{{index==2?false:true}}"></view>
+  </view>
+</view>
+  <view class="tab-content" wx:if="{{index==0}}">
+    <view class="tab-item">
+    <text class="tab-item-left">计算方式</text>
+      <van-radio-group class="radioGroup" value="{{ radio }}" bind:change="onRadioChange">
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="1">
+          按贷款总额
+          <image class="imgRadio" slot="icon" src="{{ radio === '1' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png'}}" />
+        </van-radio>
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="2">
+          按房屋总价
+          <image class="imgRadio" slot="icon" src="{{ radio === '2' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png' }}" />
+        </van-radio>
+      </van-radio-group>
+    </view>
+    <view class="tab-item" hidden="{{toggleBusiness}}">
+      <text class="tab-item-left">贷款总额</text>
+      <view class="tab-item-right">
+      <input class="tab-item-input" bind:input="commericePriceInput" value="{{commericePrice}}" type="number" placeholder="请输入贷款总额"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">房屋总价</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="houseTotalPriceInput" value="{{houseTotalPrice}}" type="number" placeholder="请输入房屋总价"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付比例</text>
+      <view class="tab-item-right">
+        <text>{{downPayRatio}}%</text>
+        <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付金额</text>
+      <view class="tab-item-right">
+        <text class="tab-item-right-text">{{firstPayMoney}}万元</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">贷款年限</text>
+      <view class="tab-item-right">
+      <text>{{limtyear}}年</text>
+        <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">利率方式</text>
+      <view class="tab-item-right">
+        <text>按{{commericeWay}}</text>
+        <image id="profileRate" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleProfit}}">
+      <text class="tab-item-left">LPR</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="lprValueInput" value="{{lprValue}}" type="digit" placeholder="0"/>
+        <text class="tab-item-right-text">%</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleProfit}}">
+        <text class="tab-item-left">基点</text>
+        <view class="tab-item-right">
+          <input class="tab-item-input" value="{{bpValue}}" type="number" placeholder="0"/>
+          <text class="tab-item-right-text">BP(‱)</text>
+        </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">商业贷款利率</text>
+      <view class="tab-item-right">
+        <text>基准利率({{basePR}}%)</text>
+        <image id="loanRate" wx:if="{{hideImg}}" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="compute-btn" hidden="{{toggleBtn}}">开始计算</view>
+    <view class="compute-active-btn" hidden="{{!toggleBtn}}" bind:tap="computed1">开始计算</view>
+  </view>
+  <view class="tab-content" wx:if="{{index==1}}">
+    <view class="tab-item">
+      <text class="tab-item-left">计算方式</text>
+      <van-radio-group class="radioGroup" value="{{ radio }}" bind:change="onRadioChange">
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="1">
+          按贷款总额
+          <image class="imgRadio" slot="icon" src="{{ radio === '1' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png'}}" />
+        </van-radio>
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="2">
+          按房屋总价
+          <image class="imgRadio" slot="icon" src="{{ radio === '2' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png' }}" />
+        </van-radio>
+      </van-radio-group>
+    </view>
+    <view class="tab-item" hidden="{{toggleBusiness}}">
+      <text class="tab-item-left">贷款总额</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="loanPriceInput" value="{{loanPrice}}" type="number" placeholder="请输入贷款总额"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">房屋总价</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="houseTotalPrice1Input" value="{{houseTotalPrice1}}" type="number" placeholder="请输入房屋总价"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付比例</text>
+      <view class="tab-item-right">
+        <text>{{downPayRatio}}%</text>
+        <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付金额</text>
+      <view class="tab-item-right">
+        <text class="tab-item-right-text">{{firstPayMoney}}万元</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">贷款年限</text>
+      <view class="tab-item-right">
+        <text>{{limtyear}}年</text>
+        <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">公积金贷款总额</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="totalFundLoansInput" placeholder="请输入公积金贷款总额" value="{{totalFundLoans}}" type="number"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">公积金贷款利率</text>
+      <view class="tab-item-right">
+        <text>基准利率({{interestFunLoan}}%)</text>
+        <image id="funLoan" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">商业贷款总额</text>
+      <view class="tab-item-right">
+        <text class="tab-item-right-text">{{commericePrice}}万元</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">利率方式</text>
+      <view class="tab-item-right">
+        <text>按{{commericeWay}}</text>
+        <image id="profileRate" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleProfit}}">
+      <text class="tab-item-left">LPR</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" value="{{lprValue}}" type="digit" placeholder="0" bind:input="lprValueInput" />
+        <text class="tab-item-right-text">%</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleProfit}}">
+      <text class="tab-item-left">基点</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" value="{{bpValue}}" type="number" placeholder="0"/>
+        <text class="tab-item-right-text">BP(‱)</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">商业贷款利率</text>
+      <view class="tab-item-right">
+        <text>基准利率({{basePR}}%)</text>
+        <image id="loanRate" wx:if="{{hideImg}}" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="compute-btn" hidden="{{toggleBtn}}">开始计算</view>
+    <view class="compute-active-btn" hidden="{{!toggleBtn}}" bind:tap="computed2">开始计算</view>
+  </view>
+  <view class="tab-content" wx:if="{{index==2}}">
+    <view class="tab-item">
+      <text class="tab-item-left">计算方式</text>
+      <van-radio-group class="radioGroup" value="{{ radio }}" bind:change="onRadioChange">
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="1">
+          按贷款总额
+          <image class="imgRadio" slot="icon" src="{{ radio === '1' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png'}}" />
+        </van-radio>
+        <van-radio class="radio-text" use-icon-slot value="{{ radio }}" name="2">
+          按房屋总价
+          <image class="imgRadio" slot="icon" src="{{ radio === '2' ? '../image/icon_select_18_pre@2x.png':'../image/icon_select_18_nor@2x.png' }}" />
+        </van-radio>
+      </van-radio-group>
+    </view>
+    <view class="tab-item" hidden="{{toggleBusiness}}">
+      <text class="tab-item-left">贷款总额</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="commericePriceInput" placeholder="请输入贷款总额"  value="{{commericePrice}}" type="number"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">房屋总价</text>
+      <view class="tab-item-right">
+        <input class="tab-item-input" bind:input="houseTotalPriceInput" value="{{houseTotalPrice}}" type="number" placeholder="请输入房屋总价"/>
+        <text class="tab-item-right-text">万元</text>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付比例</text>
+      <view class="tab-item-right">
+        <text>{{downPayRatio}}%</text>
+        <image id="firstPayRatio" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item" hidden="{{!toggleBusiness}}">
+      <text class="tab-item-left">首付金额</text>
+      <view class="tab-item-right">
+        <text class="tab-item-right-text">{{firstPayMoney}}万元</text>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">贷款年限</text>
+      <view class="tab-item-right">
+        <text>{{limtyear}}年</text>
+        <image id="year" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="tab-item">
+      <text class="tab-item-left">公积金贷款利率</text>
+      <view class="tab-item-right">
+        <text>基准利率({{interestFunLoan}}%)</text>
+        <image id="funLoan" class="goImg" src="../image/icon_go_22_gray@2x(2).png" mode="widthFix" bind:tap="goSheet"></image>
+      </view>
+    </view>
+    <view class="compute-btn" hidden="{{toggleBtn}}">开始计算</view>
+    <view class="compute-active-btn" hidden="{{!toggleBtn}}" bind:tap="computed3">开始计算</view>
+  </view>
+  <sheet show="{{show}}" actions="{{actions}}" type="{{type}}" bind:onClose="onClose" title="{{title}}"/>
+  <van-toast id="van-toast" />
+</view>
